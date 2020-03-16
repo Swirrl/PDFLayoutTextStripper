@@ -67,7 +67,7 @@ import org.apache.pdfbox.text.TextPositionComparator;
 public class PDFLayoutTextStripper extends PDFTextStripper {
 
     public static final boolean DEBUG = false;
-    public static final int OUTPUT_SPACE_CHARACTER_WIDTH_IN_PT = 4;
+    public static final int OUTPUT_SPACE_CHARACTER_WIDTH_IN_PT = 1;
 
     private double currentPageWidth;
     private TextPosition previousTextPosition;
@@ -90,7 +90,7 @@ public class PDFLayoutTextStripper extends PDFTextStripper {
     public void processPage(PDPage page) throws IOException {
         PDRectangle pageRectangle = page.getMediaBox();
         if (pageRectangle!= null) {
-            this.setCurrentPageWidth(pageRectangle.getWidth());
+            this.setCurrentPageWidth(pageRectangle.getHeight());
             super.processPage(page);
             this.previousTextPosition = null;
             this.textLineList = new ArrayList<TextLine>();
